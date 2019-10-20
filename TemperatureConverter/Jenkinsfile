@@ -31,7 +31,7 @@ pipeline {
         }  
 	    stage('Save BAR'){
 		    steps{
-			    sh ""
+			sh "cp /var/lib/jenkins/workspace/savebar-iib/output/tempconvert.bar /var/lib/jenkins/workspace/savebar-iib/ "
 		    }
 	    }
         
