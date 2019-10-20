@@ -31,12 +31,15 @@ pipeline {
         }  
 	    stage('Save BAR'){
 		    steps{
-			sh "cp /var/lib/jenkins/workspace/savebar-iib/output/tempconvert.bar /var/lib/jenkins/workspace/savebar-iib/ "
+			sh "/var/lib/jenkins/workspace/push-bar"
+			sh "cp /var/lib/jenkins/workspace/savebar-iib/output/tempconvert.bar /var/lib/jenkins/workspace/push-bar/ "
 			sh " cd /var/lib/jenkins/workspace/savebar-iib/"
+			sh "git init"
 			sh 'git config --global user.email "sitaramaprasad.erothu@gmail.com" '
 			sh 'git config --global user.name "sitaramaprasad-e" '
 			sh "git add tempconvert.bar"
 			sh 'git commit -m "Added bar file to the repo" '
+			sh 'git pull https://github.com/sitaramaprasad-e/temp-convert-github-iib.git master'
 			sh "git push -u origin master"
 		    }
 	    }
