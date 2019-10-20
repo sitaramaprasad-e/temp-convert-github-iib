@@ -1,0 +1,47 @@
+pipeline {
+
+    // Instructs Jenkins to use the buildconductor docker image to run this pipeline Test
+    
+    agent {
+        docker { 
+            image 'greghodgkinson/jenkins-buildconductor-iib:edge' 
+            label 'docker'
+            args '-u root'
+        }
+        
+    }
+
+    stages {
+    
+        // Pull down source code from Git repo
+        
+       stage('Checkout Code'){
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'load']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sitaramaprasad-e/temp-convert-github-iib.git']]])
+            }
+       }   
+       
+              
+       // Build BAR file from source code
+       
+        stage('Build BAR') {
+            steps {
+                sh "/buildconductor/iib/run-automation.sh build tempconvert TemperatureConverter" 
+            }
+        }  
+	    stage('Save BAR'){
+		    steps{
+			sh "cp /var/lib/jenkins/workspace/savebar-iib/output/tempconvert.bar /var/lib/jenkins/workspace/savebar-iib/ "
+			sh " cd /var/lib/jenkins/workspace/savebar-iib/"
+			sh 'git config --global user.email "sitaramaprasad.erothu@gmail.com" '
+			sh 'git config --global user.name "sitaramaprasad-e" '
+			sh "git add tempconvert.bar"
+			sh 'git commit -m "Added bar file to the repo" '
+			sh "git push -u origin master"
+		    }
+	    }
+        
+            
+    }
+
+}

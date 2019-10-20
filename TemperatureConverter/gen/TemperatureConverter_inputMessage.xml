@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MessagePool xmlns="http://wwww.ibm.com/iib/test/1.0.0">
+    <SOAPInputMessage WSDL_URI="platform:/resource/TemperatureConverter/TemperatureConverter.wsdl" WSDL_OPERATION_OUT_NAME="CtoFResponse" WSDL_OPERATION_NAME="CtoF" WSDL_OPERATION_IN_NAME="CtoFRequest" timestamp="1441027585622" nodeId="FCMComposite_1_1" name="new message 1" id="1441027585622-6">
+        <plainText>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;tns0:Envelope xmlns:tns0=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:tns1=&quot;http://TemperatureConverter&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+  &lt;tns0:Header/&gt;
+  &lt;tns0:Body&gt;
+    &lt;tns1:CtoF&gt;
+      &lt;TemperatureInC&gt;27&lt;/TemperatureInC&gt;
+    &lt;/tns1:CtoF&gt;
+  &lt;/tns0:Body&gt;
+&lt;/tns0:Envelope&gt;</plainText>
+    </SOAPInputMessage>
+</MessagePool>
