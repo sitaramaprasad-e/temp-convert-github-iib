@@ -37,7 +37,7 @@ pipeline {
 			sh 'git config --global user.name "sitaramaprasad-e" '
 			sh "git add tempconvert.bar"
 			sh 'git commit -m "Added bar file to the repo from pipeline" '
-			//sh 'git remote set-url origin git@github.com:sitaramaprasad-e/temp-convert-github-iib.git'
+			sh 'git remote set-url origin https://github.com:sitaramaprasad-e/temp-convert-github-iib.git'
 			sh "git push -u origin HEAD:master"
 		    }
 	    }
