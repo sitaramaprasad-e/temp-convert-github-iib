@@ -32,9 +32,8 @@ pipeline {
 	    stage('Save BAR'){
 		    steps{
 			sh "cp /var/lib/jenkins/workspace/savebar-iib/output/tempconvert.bar /var/lib/jenkins/workspace/savebar-iib/ "
+			sh " cd /var/lib/jenkins/workspace/savebar-iib/"
 			sh "git add tempconvert.bar"
-			sh 'git config --global user.email "sitaramaprasad.erothu@gmail.com" '
-			sh 'git config --global user.name "sitaramaprasad-e" '
 			sh 'git commit -m "Added bar file to the repo" '
 			sh "git push -u origin master"
 		    }
