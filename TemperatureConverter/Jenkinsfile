@@ -31,7 +31,6 @@ pipeline {
         }  
 	    stage('Save BAR'){
 		    steps{
-			sh "/var/lib/jenkins/workspace/push-bar"
 			sh "cp /var/lib/jenkins/workspace/savebar-iib/output/tempconvert.bar /var/lib/jenkins/workspace/push-bar/ "
 			sh " cd /var/lib/jenkins/workspace/savebar-iib/"
 			sh "git init"
