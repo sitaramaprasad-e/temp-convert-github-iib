@@ -33,10 +33,10 @@ pipeline {
 		    steps{
 			sh "cp /var/lib/jenkins/workspace/savebar-iib/output/tempconvert.bar /var/lib/jenkins/workspace/savebar-iib/ "
 			sh "cd /var/lib/jenkins/workspace/savebar-iib/ "
-			withCredentials([usernamePassword(credentialsId: '58e2f3a9-5a02-4229-a3a8-943f4d52539a', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                        sh("git tag -a some_tag -m 'Jenkins'")
 			sh 'git config --global user.email "sitaramaprasad.erothu@gmail.com" '
 			sh 'git config --global user.name "sitaramaprasad-e" '
+			withCredentials([usernamePassword(credentialsId: '58e2f3a9-5a02-4229-a3a8-943f4d52539a', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                        sh("git tag -a some_tag -m 'Jenkins'")
 			sh "('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com:sitaramaprasad-e/temp-convert-github-iib.git')"
 			}
 			sshagent (credentials: ['git-ssh-credentials-ID']) {
