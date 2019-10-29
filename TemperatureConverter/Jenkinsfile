@@ -39,12 +39,13 @@ pipeline {
                         // sh("git tag -a some_tag -m 'Jenkins'")
 			sh "git add tempconvert.bar"
 			sh 'git commit -m "Added bar file to the repo from pipeline" '
+			// sh ('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com:sitaramaprasad-e/temp-convert-github-iib.git')
 			sh "git push -u origin HEAD:master"
 			}
-			sshagent (credentials: ['58e2f3a9-5a02-4229-a3a8-943f4d52539a']) {
-             		sh("git tag -a some_tag -m 'Jenkins'")
-            		sh "git push -u origin HEAD:master"
-			}
+			// sshagent (credentials: ['58e2f3a9-5a02-4229-a3a8-943f4d52539a']) {
+             		// sh("git tag -a some_tag -m 'Jenkins'")
+            		// sh "git push -u origin HEAD:master"
+			// }
 			}
 		    }
 	
