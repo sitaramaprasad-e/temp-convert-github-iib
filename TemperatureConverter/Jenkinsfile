@@ -38,7 +38,7 @@ pipeline {
 				sh 'git config --global user.name "sitaramaprasad-e" '
 				sh "git add tempconvert.bar"
 				sh 'git commit -m "Added bar file to the repo from pipeline" '
-				sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@https://github.com/sitaramaprasad-e/temp-convert-github-iib.git HEAD:master')
+				sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@temp-convert-github-iib.git HEAD:master')
 			}
 
 			}
