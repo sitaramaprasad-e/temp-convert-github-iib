@@ -34,6 +34,8 @@ pipeline {
 			withCredentials([usernamePassword(credentialsId: 'git-pass-credentials-ID', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
 				sh "cp /var/lib/jenkins/workspace/savebar-iib/output/tempconvert.bar /var/lib/jenkins/workspace/savebar-iib/ "
 				sh "cd /var/lib/jenkins/workspace/savebar-iib/ "
+				sh 'git config --global user.email "sitaramaprasad.erothu@gmail.com" '
+				sh 'git config --global user.name "sitaramaprasad-e" '
 				sh "git add tempconvert.bar"
 				sh 'git commit -m "Added bar file to the repo from pipeline" '
 				sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@https://github.com/sitaramaprasad-e/temp-convert-github-iib.git')
