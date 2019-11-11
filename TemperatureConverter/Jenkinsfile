@@ -31,7 +31,7 @@ pipeline {
         }  
 	    stage('Save BAR'){
 		    steps{
-			withCredentials([usernamePassword(credentialsId: 'git-pass-credentials-ID', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+			sshagent (credentials: ['jenkinsgithub']) {
 				sh "cp /var/lib/jenkins/workspace/savebar-iib/output/tempconvert.bar /var/lib/jenkins/workspace/savebar-iib/ "
 				sh "cd /var/lib/jenkins/workspace/savebar-iib/ "
 				sh 'git config --global user.email "sitaramaprasad.erothu@gmail.com" '
